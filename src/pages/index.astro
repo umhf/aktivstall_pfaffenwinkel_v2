@@ -3,33 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import { cards } from "../data/cards";
 import { Picture } from "astro-imagetools/components";
-import smartphone from "../images/icons/smartphone.svg";
-import photographer from "../images/icons/photographer.svg";
-import picture from "../images/icons/picture.svg";
 import ButtonPrimary from "../components/ButtonPrimary.astro";
 import Heading from "../components/Heading.astro";
-
-const fotoShootingContent = [
-  {
-    icon: smartphone,
-    headline: "Vor dem Shooting",
-    alt: "Smartphone Icon",
-    h: "h-12",
-    text: "Wir besprechen alles, was wichtig ist: dein Outfit, die Tageszeit, die Umgebung und Locations. Bei einem Pferdeshooting darfst du mir gerne Fotos und Videos von den Koppeln und Wunschlocations schicken.",
-  },
-  {
-    icon: photographer,
-    headline: "Am Shootingtag",
-    alt: "Fotograf Icon",
-    text: "Wir besichtigen zunächst gemeinsam die Location und lernen uns kennen. So kann ich auch in Ruhe dein Pferd oder Hund begrüßen und die erste Aufregung verfällt. Eine helfende Hand ist vor allem bei Pferden im Freien wichtig, den neugirierigen Blick in die gewünschte Richtung zu lenken.",
-  },
-  {
-    icon: picture,
-    headline: "Nach dem Shooting",
-    alt: "Bild Icon",
-    text: "Du erhälst einen Link zu deiner persönlichen Onlinegalerie. Hier kannst du dir in Ruhe deine Lieblingsbilder aussuchen, die anschließend von mir liebevoll und aufwendig bearbeitet werden.",
-  },
-];
 ---
 
 <Layout title="Home">
@@ -60,40 +35,6 @@ const fotoShootingContent = [
             <Picture src="/src/images/marina_signature.png" alt="Marina Schmid Logo" sizes="240px" />
           </div>
         </div>
-      </div>
-    </section>
-    <section>
-      <Heading heading="Das Fotoshooting" />
-      <div class="mt-8 md:grid md:grid-flow-col md:gap-8">
-        {
-          fotoShootingContent.map((content, i, row) => (
-            <div class="grid grid-flow-col md:flex md:flex-col gap-4 items-start">
-              <div class="grid grid-rows-[auto_1fr] md:grid-cols-[auto_1fr] h-full md:h-auto md:w-full">
-                <div class="rounded-full bg-colored-300 w-16 h-16 flex">
-                  <img
-                    src={content.icon}
-                    alt={content.alt}
-                    height="64"
-                    width="64"
-                    class={`w-auto m-auto ${content.h ? content.h : "h-16"}`}
-                  />
-                </div>
-                <div
-                  class={`${
-                    i + 1 !== row.length ? "md:-mr-8" : ""
-                  } grid grid-cols-2 md:grid-rows-2 md:grid-cols-1 divide-x divide-white-400 md:divide-x-0 md:divide-y `}
-                >
-                  <div />
-                  <div />
-                </div>
-              </div>
-              <div class={`${i + 1 !== row.length ? "mb-8 md:mb-0" : ""}`}>
-                <h2 class="m-0 mb-2 text-xl">{content.headline}</h2>
-                <p>{content.text}</p>
-              </div>
-            </div>
-          ))
-        }
       </div>
     </section>
     <section>

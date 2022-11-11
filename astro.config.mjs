@@ -20,6 +20,9 @@ import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
+import node from "@astrojs/node";
+
+// https://astro.build/config
 export default defineConfig({
   vite: {
     build: {
@@ -33,6 +36,10 @@ export default defineConfig({
     }
   },
   site: "https://marina-schmid.com",
-  integrations: [astroImageTools, tailwind(), critters(), purgecss(), prefetch(), sitemap()]
+  integrations: [astroImageTools, tailwind(), critters(), purgecss(), prefetch(), sitemap()],
+  output: "server",
+  adapter: node({
+    mode: 'standalone'
+  })
 });
 /* TODO: Compress fehlt noch */
