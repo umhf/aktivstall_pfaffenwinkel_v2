@@ -23,6 +23,9 @@ import sitemap from "@astrojs/sitemap";
 import netlify from "@astrojs/netlify/edge-functions";
 
 // https://astro.build/config
+import node from "@astrojs/node";
+
+// https://astro.build/config
 export default defineConfig({
   vite: {
     build: {
@@ -38,7 +41,10 @@ export default defineConfig({
   site: "https://marina-schmid.com",
   integrations: [astroImageTools, tailwind(), critters(), purgecss(), prefetch()],
   output: "server",
-  adapter: netlify()
+  adapter: node({
+    mode: 'standalone'
+  })
 });
 /* vermutlich anderer adapter nehmen! https://www.netlify.com/blog/astro-ssr/ */
+/* TODO: IMPORTANT https://duckduckgo.com/?q=Cannot+bundle+Node.js+built-in+astro+netlify&atb=v350-2&ia=web */
 /* TODO: Compress fehlt noch, , sitemap() auch */
