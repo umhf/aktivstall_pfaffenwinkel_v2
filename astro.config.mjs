@@ -20,7 +20,7 @@ import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
-import node from "@astrojs/node";
+import netlify from "@astrojs/netlify/edge-functions";
 
 // https://astro.build/config
 export default defineConfig({
@@ -38,8 +38,7 @@ export default defineConfig({
   site: "https://marina-schmid.com",
   integrations: [astroImageTools, tailwind(), critters(), purgecss(), prefetch()],
   output: "server",
-  adapter: node({
-    mode: 'standalone'
-  })
+  adapter: netlify()
 });
+/* vermutlich anderer adapter nehmen! https://www.netlify.com/blog/astro-ssr/ */
 /* TODO: Compress fehlt noch, , sitemap() auch */
