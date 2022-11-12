@@ -36,10 +36,10 @@ export default defineConfig({
     }
   },
   site: "https://marina-schmid.com",
-  integrations: [astroImageTools, tailwind(), critters(), purgecss(), prefetch(), sitemap()],
+  integrations: [astroImageTools, tailwind(), critters(), purgecss(), prefetch()],
   output: "server",
   adapter: node({
     mode: 'standalone'
   })
 });
-/* TODO: Compress fehlt noch */
+/* TODO: Compress fehlt noch, , sitemap() auch */
