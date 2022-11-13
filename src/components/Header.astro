@@ -1,21 +1,21 @@
 ---
 import Hamburger from "./Hamburger.astro";
 import Menu from "./Menu.astro";
-import LogoMS from "./LogoMS.astro";
+import Logo from "./Logo.astro";
 ---
 
-<header class="header border-b border-colored-200 fixed top-0 z-50 w-full -mx-4 bg-white-50 px-4">
+<header class="header fixed top-0 z-50 w-full bg-white-900">
   <nav
-    class="md:container mx-auto bg-white-50 grid grid-cols-4 md:flex items-center max-h-12 relative md:py-4"
+    class="border-b border-white-700 md:container mx-auto bg-white-900 grid grid-cols-4 md:flex items-center max-h-12 relative md:py-4"
     id="navbar"
   >
-    <div class="col-start-2 col-span-2 md:col-start-1 md:col-span-1 m-auto md:m-0 max-h-10">
+    <div class="col-start-2 col-span-2 md:col-start-1 md:col-span-1 m-auto md:m-0 max-h-10 h-full">
       <a rel="prefetch" href="/" aria-label="Zur Startseite">
-        <LogoMS />
+        <Logo />
       </a>
     </div>
     <Hamburger />
-    <Menu menuItems={["Home", "Portfolio", "Stories", "Kontakt"]} />
+    <Menu />
   </nav>
 </header>
 <script>
@@ -25,7 +25,6 @@ import LogoMS from "./LogoMS.astro";
     navbar.querySelector("#menu").classList.toggle("-translate-y-full");
     navbar.querySelector("#menu ul").classList.toggle("opacity-0");
     overlay.classList.toggle("hidden");
-    document.body.classList.toggle("overflow-hidden");
   }
   navbar.querySelector("#menu-button").addEventListener("click", () => {
     toggleMenu();

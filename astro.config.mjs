@@ -20,12 +20,6 @@ import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
-import netlify from "@astrojs/netlify/edge-functions";
-
-// https://astro.build/config
-import node from "@astrojs/node";
-
-// https://astro.build/config
 export default defineConfig({
   vite: {
     build: {
@@ -39,12 +33,7 @@ export default defineConfig({
     }
   },
   site: "https://marina-schmid.com",
-  integrations: [astroImageTools, tailwind(), critters(), purgecss(), prefetch()],
-  output: "server",
-  adapter: node({
-    mode: 'standalone'
-  })
+  integrations: [astroImageTools, tailwind(), critters(), purgecss(), prefetch(), sitemap()]
 });
-/* vermutlich anderer adapter nehmen! https://www.netlify.com/blog/astro-ssr/ */
-/* TODO: IMPORTANT https://duckduckgo.com/?q=Cannot+bundle+Node.js+built-in+astro+netlify&atb=v350-2&ia=web */
-/* TODO: Compress fehlt noch, , sitemap() auch */
+
+/* TODO: Compress fehlt noch */

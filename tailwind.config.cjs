@@ -10,13 +10,13 @@ module.exports = {
 	},
 		fontFamily: {
 			'text': ['Inter'],
-			'heading': ['Lora', 'ui-sans-serif'],
+			'heading': ['Lora'],
 		},
 		colors: {
 			transparent: 'transparent',
 			current: 'currentColor',
-			white: colors.gray,
-			colored: colors.indigo
+			white: colors.slate,
+			colored: colors.teal
 		  },
 	},
 	plugins: [require('@tailwindcss/forms'),plugin(function({ addBase, theme, addComponents }) {

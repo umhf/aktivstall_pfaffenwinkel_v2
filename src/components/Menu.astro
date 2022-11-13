@@ -1,37 +1,41 @@
 ---
 import instagram from "../images/icons/instagram.svg";
-const { menuItems } = Astro.props;
+const menuItems = ["Home", "Leistungen", "Preise", "Über uns", "Kontakt", "Termine", "Impressionen"];
 const pathname = new URL(Astro.request.url).pathname.slice(1).replaceAll("/", "");
 ---
 
 <div
-  class="w-full absolute md:relative bg-white-50 md:bg-transparent top-12 md:top-0 -translate-y-full md:translate-y-0 -z-10 md:z-10 transition-all duration-300"
+  class="top-0 right-0 absolute md:relative bg-white-900 md:bg-transparent md:top-0 -translate-y-full md:translate-y-0 -z-10 md:z-10 transition-all duration-700"
   id="menu"
 >
   <ul
-    class="grid grid-cols-1 border-b md:border-none border-colored-200 md:flex md:justify-end md:items-center text-center divide-y md:divide-y-0 divide-white-200 p-4 md:px-0 md:py-0 mt-4 md:mt-0 opacity-0 md:opacity-100 transition-all duration-1000"
+    class="text-white-50 grid grid-cols-1 mt-12 p-4 pl-12 md:flex md:justify-end md:items-center text-right md:px-0 md:py-0 mt-4 md:mt-0 opacity-0 md:opacity-100 transition-all duration-1000"
   >
-    {
-      menuItems.map((menuItem) => (
-        <li>
-          <a
-            class={`${
-              pathname.includes(menuItem.toLowerCase()) || (pathname === "" && menuItem.toLowerCase() === "home")
-                ? "bg-colored-200 md:bg-transparent md:border-colored-700"
-                : "md:border-transparent"
-            } p-3.5 block md:py-0 md:px-4 md:border-b-2 hover:text-colored-900 transition-colors`}
-            href={menuItem.toLowerCase() === "home" ? "/" : `/${menuItem.toLowerCase()}`}
-            aria-label={menuItem}
-          >
-            {menuItem}
-          </a>
-        </li>
-      ))
-    }
-    <li>
-      <a href="https://www.instagram.com/marinullu/" target="_BLANK" class="block p-3.5 md:px-0 md:pl-4">
-        <img src={instagram} alt="Instagram Logo" width="32" height="32" class="m-auto" />
-      </a>
-    </li>
+    <div>
+      {
+        menuItems.map((menuItem) => (
+          <li>
+            <a
+              class={`${
+                pathname.includes(menuItem.toLowerCase()) || (pathname === "" && menuItem.toLowerCase() === "home")
+                  ? "text-colored-400 md:bg-transparent md:border-colored-700"
+                  : "md:border-transparent"
+              } p-3.5 block md:py-0 md:px-4 md:border-b-2 hover:text-colored-50 transition-colors`}
+              href={menuItem.toLowerCase() === "home" ? "/" : `/${menuItem.toLowerCase()}`}
+              aria-label={menuItem}
+            >
+              {menuItem}
+            </a>
+          </li>
+        ))
+      }
+    </div>
+    <div class="border-t border-white-700">
+      <li>
+        <a href="https://www.instagram.com/marinullu/" target="_BLANK" class="block p-3.5 md:px-0 md:pl-4">
+          <img src={instagram} alt="Instagram Logo" width="32" height="32" class="m-auto" />
+        </a>
+      </li>
+    </div>
   </ul>
 </div>

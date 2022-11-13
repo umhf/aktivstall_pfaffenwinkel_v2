@@ -1,7 +1,7 @@
 <button
   data-collapse-toggle="navbar-default"
   type="button"
-  class="menu-icon ml-auto inline-flex items-center text-sm md:hidden w-12 h-12 relative cursor-pointer"
+  class="menu-icon mr-4 ml-auto inline-flex items-center text-sm md:hidden w-12 h-12 relative cursor-pointer"
   aria-controls="navbar-default"
   aria-expanded="false"
 >
@@ -9,27 +9,74 @@
     id="menu-button"
     aria-label="Menu Button"
     type="checkbox"
-    class="menu-icon__cheeckbox block w-full h-full block z-10 absolute opacity-0"
+    class="menu-icon__checkbox block w-full h-full block z-10 absolute opacity-0 cursor-pointer"
   />
-  <div class="m-auto absolute inset-0 w-6 h-3">
-    <span class="absolute block w-full h-0.5 bg-white-900 rounded-sm transition-all duration-300 top-0"></span>
-    <span class="absolute block w-full h-0.5 bg-white-900 rounded-sm transition-all duration-300 bottom-0"></span>
+  <div class="menu duration-300 m-auto scale-50 absolute inset-0 w-full h-full top-2">
+    <div class="bar block absolute bg-white-50 rounded-xl duration-400 w-full h-0.5"></div>
+    <div class="bar block absolute bg-white-50 rounded-xl duration-400 w-full h-0.5"></div>
+    <div class="bar block absolute bg-white-50 rounded-xl duration-400 w-full h-0.5"></div>
   </div>
 </button>
 
 <style>
-  .menu-icon .menu-icon__cheeckbox:checked + div span:first-of-type {
+  .bar:nth-of-type(1) {
+    top: 0px;
+    -moz-transition: top 0.3s ease 0.3s, -moz-transform 0.3s ease-out 0.1s;
+    -o-transition: top 0.3s ease 0.3s, -o-transform 0.3s ease-out 0.1s;
+    -webkit-transition: top 0.3s ease, -webkit-transform 0.3s ease-out;
+    -webkit-transition-delay: 0.3s, 0.1s;
+    transition: top 0.3s ease 0.3s, transform 0.3s ease-out 0.1s;
+    -moz-animation: mrotr 2s cubic-bezier(0.5, 0.2, 0.2, 1.01);
+    -webkit-animation: mrotr 2s cubic-bezier(0.5, 0.2, 0.2, 1.01);
+    animation: mrotr 2s cubic-bezier(0.5, 0.2, 0.2, 1.01);
+  }
+  .bar:nth-of-type(2) {
+    top: 15px;
+    -moz-transition: ease 0.3s 0.3s;
+    -o-transition: ease 0.3s 0.3s;
+    -webkit-transition: ease 0.3s;
+    -webkit-transition-delay: 0.3s;
+    transition: ease 0.3s 0.3s;
+    -moz-animation: fade 2s cubic-bezier(0.5, 0.2, 0.2, 1.01);
+    -webkit-animation: fade 2s cubic-bezier(0.5, 0.2, 0.2, 1.01);
+    animation: fade 2s cubic-bezier(0.5, 0.2, 0.2, 1.01);
+  }
+  .bar:nth-of-type(3) {
+    top: 30px;
+    -moz-transition: top 0.3s ease 0.3s, -moz-transform 0.3s ease-out 0.1s;
+    -o-transition: top 0.3s ease 0.3s, -o-transform 0.3s ease-out 0.1s;
+    -webkit-transition: top 0.3s ease, -webkit-transform 0.3s ease-out;
+    -webkit-transition-delay: 0.3s, 0.1s;
+    transition: top 0.3s ease 0.3s, transform 0.3s ease-out 0.1s;
+    -moz-animation: mrotl 2s cubic-bezier(0.5, 0.2, 0.2, 1.01);
+    -webkit-animation: mrotl 2s cubic-bezier(0.5, 0.2, 0.2, 1.01);
+    animation: mrotl 2s cubic-bezier(0.5, 0.2, 0.2, 1.01);
+  }
+  .menu-icon .menu-icon__checkbox:checked + div .bar:nth-of-type(1) {
+    top: 15px;
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
-    top: 5px;
+    -moz-transition: top 0.3s ease 0.1s, -moz-transform 0.3s ease-out 0.5s;
+    -o-transition: top 0.3s ease 0.1s, -o-transform 0.3s ease-out 0.5s;
+    -webkit-transition: top 0.3s ease, -webkit-transform 0.3s ease-out;
+    -webkit-transition-delay: 0.1s, 0.5s;
+    transition: top 0.3s ease 0.1s, transform 0.3s ease-out 0.5s;
   }
-  .menu-icon .menu-icon__cheeckbox:checked + div span:last-of-type {
+  .menu-icon .menu-icon__checkbox:checked + div .bar:nth-of-type(2) {
+    opacity: 0;
+  }
+  .menu-icon .menu-icon__checkbox:checked + div .bar:nth-of-type(3) {
+    top: 15px;
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
-    bottom: 5px;
-  }
-  .menu-icon.active:hover span:first-of-type,
-  .menu-icon.active:hover span:last-of-type,
-  .menu-icon:hover .menu-icon__cheeckbox:checked + div span:first-of-type,
-  .menu-icon:hover .menu-icon__cheeckbox:checked + div span:last-of-type {
-    width: 24px;
+    -moz-transition: top 0.3s ease 0.1s, -moz-transform 0.3s ease-out 0.5s;
+    -o-transition: top 0.3s ease 0.1s, -o-transform 0.3s ease-out 0.5s;
+    -webkit-transition: top 0.3s ease, -webkit-transform 0.3s ease-out;
+    -webkit-transition-delay: 0.1s, 0.5s;
+    transition: top 0.3s ease 0.1s, transform 0.3s ease-out 0.5s;
   }
 </style>
