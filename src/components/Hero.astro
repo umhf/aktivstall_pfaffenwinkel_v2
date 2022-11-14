@@ -2,7 +2,7 @@
 import { BackgroundPicture } from "astro-imagetools/components";
 import fs from "fs";
 
-const { path, heading1, heading2 } = Astro.props;
+const { path, heading } = Astro.props;
 const imageFiles =
   Astro.props.imageFiles ||
   fs.readdirSync(path).filter((file) => {
@@ -10,54 +10,49 @@ const imageFiles =
   });
 ---
 
-<div class="-mx-4 max-w-screen-2xl 2xl:mx-auto relative">
-  <div class="absolute bottom-8 z-10 w-full px-4">
-    <div class="mx-auto container">
-      {heading2 && <h1 class="text-base text-xl lg:text-2xl text-white-50 font-text m-0">{heading2}</h1>}
-      <h2 class="text-5xl leading-none lg:text-7xl leading-tight text-white-50 mt-0 shadow-white">
-        {heading1}
-      </h2>
-    </div>
-  </div>
-
+<div class="-mx-4 w-full max-w-screen-2xl 2xl:mx-auto fixed top-0 -z-10">
   {
     imageFiles.map((imagefile, index) => {
       return (
-        <div
-          class={`bg-image ${imageFiles.length > 1 && "duration-[3s]"} ${
-            index !== 0 ? "absolute top-0 w-full opacity-0" : ""
-          }`}
+        <BackgroundPicture
+          src={`/${path}/${imagefile}`}
+          tag="div"
+          breakpoints={{ count: 8, minWidth: 320, maxWidth: 3840 }}
+          loading="eager"
+          sizes={(breakpoints) => {
+            const maxWidth = breakpoints[breakpoints.length - 1];
+            return `(min-width: ${maxWidth}px) ${maxWidth}px, 100vw`;
+          }}
+          attributes={{
+            link: {
+              fetchpriority: "high",
+            },
+          }}
+          artDirectives={[
+            {
+              src: `/${path}/${imagefile.replace(".", "_portrait.")}`,
+              media: "(max-aspect-ratio: 2/3)",
+              breakpoints: { count: 6, minWidth: 300, maxWidth: 1400 },
+            },
+          ]}
         >
-          <BackgroundPicture
-            src={`/${path}/${imagefile}`}
-            tag="div"
-            breakpoints={{ count: 8, minWidth: 320, maxWidth: 3840 }}
-            loading="eager"
-            sizes={(breakpoints) => {
-              const maxWidth = breakpoints[breakpoints.length - 1];
-              return `(min-width: ${maxWidth}px) ${maxWidth}px, 100vw`;
-            }}
-            attributes={{
-              link: {
-                fetchpriority: "high",
-              },
-            }}
-            artDirectives={[
-              {
-                src: `/${path}/${imagefile.replace(".", "_portrait.")}`,
-                media: "(max-aspect-ratio: 2/3)",
-                breakpoints: { count: 6, minWidth: 300, maxWidth: 1400 },
-              },
-            ]}
-          >
-            <div class="h-full pt-20 pb-12 px-4 bg-gradient-to-b from-transparent via-transparent to-white-900/50">
-              <div class="container mx-auto flex flex-col justify-end h-96 min-h-[70vh]" />
-            </div>
-          </BackgroundPicture>
-        </div>
+          <div class="h-full pt-20 pb-12 px-4 bg-white-900/50">
+            <div class="container mx-auto flex flex-col justify-end h-96 min-h-[70vh]" />
+          </div>
+        </BackgroundPicture>
       );
     })
   }
+</div>
+<div class="bottom-8 z-10 w-full mt-40">
+  <div class="mx-auto container text-center">
+    <h2 class="text-base text-xl lg:text-2xl text-white-50 font-text m-0">
+      <span class="font-sec text-colored-300">Aktivstall</span> Pfaffenwinkel
+    </h2>
+    <h1 class="text-5xl leading-none lg:text-7xl leading-tight text-white-50 mt-0 shadow-white">
+      {heading}
+    </h1>
+  </div>
 </div>
 
 <script>

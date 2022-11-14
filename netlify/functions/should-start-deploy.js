@@ -1,9 +1,7 @@
 import fetch from "node-fetch"
 import moment from "moment";
 
-//const api_key = process.env.GOOGLE_CAL_API_KEY;
 const api_key = "AIzaSyDqGCw5rVobBZWAgwBFArxj7lo9sr_jI8Y";
-//const cal_id = process.env.GOOGLE_CAL_ID;
 const cal_id = "96b8baf7232624b615b89b0fc72e21687e9236e61b44a22fd265c734b1eef266@group.calendar.google.com";
 const url = new URL(`https://www.googleapis.com/calendar/v3/calendars/${cal_id}/events`);
 url.searchParams.append("key", api_key);

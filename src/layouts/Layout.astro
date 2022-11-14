@@ -2,6 +2,7 @@
 import { SEO } from "astro-seo";
 import Header from "../components/Header.astro";
 import "@fontsource/inter";
+import "@fontsource/parisienne";
 import Footer from "../components/Footer.astro";
 const {
   title,
@@ -28,7 +29,9 @@ const canonicalURL = new URL(Astro.url.pathname, import.meta.env.PUBLIC_DOMAIN);
     <div class="menu-overlay hidden fixed top-0 w-full h-full bg-white-900/50 z-20"></div>
     <div class="mt-12">
       <Header />
-      <slot />
+      <div class="px-4">
+        <slot />
+      </div>
       <Footer />
     </div>
   </body>

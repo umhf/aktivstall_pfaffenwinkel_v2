@@ -10,7 +10,7 @@ module.exports = {
 	},
 		fontFamily: {
 			'text': ['Inter'],
-			'heading': ['Lora'],
+			'sec': ['Parisienne'],
 		},
 		colors: {
 			transparent: 'transparent',
@@ -21,8 +21,8 @@ module.exports = {
 	},
 	plugins: [require('@tailwindcss/forms'),plugin(function({ addBase, theme, addComponents }) {
 		addBase({
-		  'h2': { marginBottom: theme("margin.2"), marginTop: theme("margin.4"), fontSize: theme('fontSize.2xl'), fontFamily: theme("fontFamily.heading") },
-		  'h1': { fontSize: theme('fontSize.4xl'), fontFamily: theme("fontFamily.heading")},
+		  'h2': { marginBottom: theme("margin.2"), marginTop: theme("margin.4"), fontSize: theme('fontSize.2xl'), fontFamily: theme("fontFamily.sec") },
+		  'h1': { fontSize: theme('fontSize.4xl'), fontFamily: theme("fontFamily.sec")},
 		  "html": { fontFamily: theme("fontFamily.serif"), color: theme("colors.white.800") }, 
 		  "p": {marginBottom: theme("margin.1")}
 		}),
