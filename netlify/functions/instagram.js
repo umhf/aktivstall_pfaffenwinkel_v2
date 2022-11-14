@@ -10,11 +10,10 @@ console.log(url.href);
 
 export const handler = async () => {
     const media = await fetch(url.href);
-    console.log(media);
+    const data = await media.json();
 
-    
     return {
         statusCode: 200,
-        body: JSON.stringify(media)
+        body: JSON.stringify(data)
     }
 }
