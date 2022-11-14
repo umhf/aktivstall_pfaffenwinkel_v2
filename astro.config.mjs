@@ -36,4 +36,5 @@ export default defineConfig({
   integrations: [astroImageTools, tailwind(), critters(), purgecss(), prefetch(), sitemap()]
 });
 
+/* TODO: Test mit und ohne Compress machen */
 /* TODO: Compress fehlt noch */
