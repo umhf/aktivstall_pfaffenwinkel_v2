@@ -12,7 +12,6 @@ url.searchParams.append("singleEvents", "true");
 url.searchParams.append("orderBy", "startTime");
 url.searchParams.append("showDeleted", "true");
 
-console.log(cal_id)
 
 export const shouldDeploy = async () => {
     let shouldDeploy = false;
@@ -27,5 +26,13 @@ export const shouldDeploy = async () => {
         return true
     });
     return shouldDeploy
+}
 
-    }
+export const handler = async () => {
+    return shouldDeploy().then(shouldDeployToday => {
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ shouldDeployToday })
+        }
+    })
+}
