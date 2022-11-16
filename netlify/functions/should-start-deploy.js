@@ -5,7 +5,7 @@ const api_key = "AIzaSyDqGCw5rVobBZWAgwBFArxj7lo9sr_jI8Y";
 const cal_id = "96b8baf7232624b615b89b0fc72e21687e9236e61b44a22fd265c734b1eef266@group.calendar.google.com";
 const url = new URL(`https://www.googleapis.com/calendar/v3/calendars/${cal_id}/events`);
 url.searchParams.append("key", api_key);
-url.searchParams.append("maxResults", "100");
+url.searchParams.append("maxResults", "5");
 const yesterday = moment().subtract(1, "d");
 url.searchParams.append("timeMin", yesterday.toISOString());
 url.searchParams.append("singleEvents", "true");
@@ -19,8 +19,8 @@ export const shouldDeploy = async () => {
     const data = await events.json();
     data.items.every(item => {
         if (moment(item.start.dateTime).isSame(yesterday, "d") ||
-            moment(item.created.dateTime).isSame(yesterday, "d") ||
-            moment(item.updated.dateTime).isSame(yesterday, "d")) {
+            moment(item.created).isSame(yesterday, "d") ||
+            moment(item.updated).isSame(yesterday, "d")) {
                 shouldDeploy = true
         }
         return true

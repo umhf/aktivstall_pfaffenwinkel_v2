@@ -2,7 +2,7 @@
 import { BackgroundPicture } from "astro-imagetools/components";
 import fs from "fs";
 
-const { path, heading } = Astro.props;
+const { path } = Astro.props;
 const imageFiles =
   Astro.props.imageFiles ||
   fs.readdirSync(path).filter((file) => {
@@ -44,29 +44,3 @@ const imageFiles =
     })
   }
 </div>
-<div class="bottom-8 z-10 w-full mt-40">
-  <div class="mx-auto container text-center">
-    <h2 class="text-base text-xl lg:text-2xl text-white-50 font-text m-0">
-      <span class="font-sec text-colored-300">Aktivstall</span> Pfaffenwinkel
-    </h2>
-    <h1 class="text-5xl leading-none lg:text-7xl leading-tight text-white-50 mt-0 shadow-white">
-      {heading}
-    </h1>
-  </div>
-</div>
-
-<script>
-  const images = document.querySelectorAll(".bg-image");
-  if (images.length > 1) {
-    let max = images.length,
-      index = 0;
-
-    function change() {
-      let next = index === max - 1 ? 0 : index + 1;
-      images[index].classList.toggle("opacity-0");
-      images[next].classList.toggle("opacity-0");
-      index = next;
-    }
-    setInterval(change, 5000);
-  }
-</script>
