@@ -5,6 +5,7 @@ import { cards } from "../data/cards";
 import { Picture } from "astro-imagetools/components";
 import ButtonPrimary from "../components/ButtonPrimary.astro";
 import Heading from "../components/Heading.astro";
+import LazyLoad from "vanilla-lazyload";
 ---
 
 <Layout title="Home">
@@ -25,33 +26,6 @@ import Heading from "../components/Heading.astro";
   </div>
   <main class="container mx-auto mt-96">
     <section>
-      <Heading heading="Über mich" />
-
-      <div class="flex flex-col sm:flex-row sm:space-x-4 items-center justify-center m-auto max-w-4xl md:space-x-8">
-        <div class="mb-6 border border-white-900 p-1 max-w-md sm:w-1/2">
-          <Picture
-            src="/src/images/marina-schmid.jpeg"
-            alt="Marina Schmid Portrait"
-            breakpoints={{ count: 5, minWidth: 340, maxWidth: 1350 }}
-            sizes="(min-width: 640px) 50vw, 100vw"
-          />
-        </div>
-        <div class="sm:flex-1 sm:max-w-[50%]">
-          <p class="text-center text-2xl mb-2 font-text">Hi,</p>
-          <p class="lg:text-lg">
-            ich heiße Marina und bin eine professionelle Paar- und Familien- sowie Pferde- und Hundefotografin. Als
-            kreative Person, die die Natur liebt, fotografiere ich ausschließlich in der Natur. Fotografie mit Menschen
-            und Tiere sind meine wahre Leidenschaft. Schließlich habe ich diese Leidenschaft zu meinem Beruf gemacht –
-            dies möchte ich mit meinen Bildern zum Ausdruck bringen. Ich liebe ich es, bleibende Erinnerungen durch
-            Fotografie zu schaffen, die schönsten Momente festzuhalten. Momente für die Ewigkeit.
-          </p>
-          <div class="text-right mt-4">
-            <Picture src="/src/images/marina_signature.png" alt="Marina Schmid Logo" sizes="240px" />
-          </div>
-        </div>
-      </div>
-    </section>
-    <section>
       <Heading heading="Mehr erfahren" />
       <div class="mt-8 flex flex-col md:flex-row md:space-x-8">
         {
@@ -67,5 +41,46 @@ import Heading from "../components/Heading.astro";
         }
       </div>
     </section>
+    <section>
+      <Heading heading="Dein neuer Aktivstall" />
+      <div>
+        <div>
+          <div>Wir haben jahrelange Erfahrung in der Pensionspferdehaltung und im Turniergeschehen</div>
+          <div>
+            Kraftfutterautomaten und zeitgesteuerte Heuraufen bieten den Tieren eine auf sie abgestimmte Haltung
+          </div>
+          <div>Weite Wiesen, der Lech und vier Badeseen zu Füßen der Alpen laden zu tollen Ausritten ein</div>
+        </div>
+        <div class="lazy">
+          <iframe
+            class="lazy w-full"
+            src="https://www.youtube.com/embed/ukF_iRNUuow"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
   </main>
 </Layout>
+<script>
+  declare global {
+    interface Window {
+      lazyLoadInstance?: any;
+      lazyLoadOptions?: any;
+    }
+    interface Event {
+      detail?: any;
+    }
+  }
+  window.lazyLoadOptions = {};
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+</script>
+
+<script async src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script>
