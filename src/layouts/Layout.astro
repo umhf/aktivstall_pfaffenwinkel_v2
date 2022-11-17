@@ -6,17 +6,17 @@ import "@fontsource/parisienne";
 import Footer from "../components/Footer.astro";
 const {
   title,
-  description = "Hunde- und Pferdefotografie aus Peiting in Oberbayern und Umgebung. Ich liebe Tiere, meine Kamera und die Natur. Deine Momente für die Ewigkeit.",
+  description = "Moderner Aktivstall zwischen Peiting und Steingaden im Herzen des Pfaffenwinkels. Eine tolle Anlage für Mensch und Pferd.",
 } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, import.meta.env.PUBLIC_DOMAIN);
 ---
 
 <!-- TODO: Twitter SEO usw., das OG zeugsl --><!DOCTYPE html>
-<html lang="de">
+<html class="bg-white-50" lang="de">
   <head>
     <meta charset="utf-8" />
     <SEO
-      title={`${title} | Aktivstall Pfaffenwinkel`}
+      title={`${title} | Aktivstall Pfaffenwinkel – Dein Pferdestall in Oberbayern`}
       description={description}
       canonical={canonicalURL.href}
       extend={{
@@ -25,13 +25,11 @@ const canonicalURL = new URL(Astro.url.pathname, import.meta.env.PUBLIC_DOMAIN);
       }}
     />
   </head>
-  <body class="bg-white-50">
+  <body class="">
     <div class="menu-overlay hidden fixed top-0 w-full h-full bg-white-900/50 z-20"></div>
     <div class="mt-12">
       <Header />
-      <div class="px-4">
-        <slot />
-      </div>
+      <slot />
       <Footer />
     </div>
   </body>

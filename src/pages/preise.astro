@@ -1,0 +1,70 @@
+---
+import ButtonPrimary from "../components/ButtonPrimary.astro";
+import Heading from "../components/Heading.astro";
+import Tabs from "../components/Tabs.astro";
+import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon";
+
+const leistungen = [
+  {
+    title: "Aktivpaket",
+    items: [
+      "Tägliche Kontrolle des Pferdes",
+      "Tägliches Säubern des Aktivstalles und der Liegeflächen",
+      "Fütterung über Kraftfutterautomat von Hafer, Pellet (bis 1 kg im Preis enthalten)",
+      "Bedarfsgerechte Fütterung über große Zeitgesteuerte Heuraufen",
+      "Ad libitum Heu für Pferde mit Mehrbedarf (Aufpreis 30 €)",
+      "Sommer und Winterweide je nach Wetter, begrenzter Weidegang möglich",
+      "Ein Schrank in der Sattelkammer",
+      "Nutzung der gesamten Anlage",
+      "Trainingsmöglichkeiten: Reithalle 20 m x 40 m, Longier -/ Bewegungshalle 20 m x 15 m, Allwetter Reitplatz 20 m x 40 m im Bau",
+      "Mineralfutter zubuchbar",
+    ],
+  },
+  {
+    title: "Premiumpaket",
+    items: ["Alles aus dem Aktivpaket", "Kein Abäppeldienst notwendig", "Mineralfuntter inkludiert"],
+  },
+];
+---
+
+<Layout title="Preise">
+  <main class="container mx-auto">
+    <section class="px-4 pt-12 pb-8 bg-white-50">
+      <Heading heading="Preise" />
+      <div>Wir bieten zwei attraktive und individualisierbare Preispakete</div>
+      <Tabs headings={[{ art: "Aktivpaket" }, { art: "Premiumpaket" }]}>
+        {
+          leistungen.map((leistung) => (
+            <div class="bg-colored-800 text-white-50 p-4 rounded">
+              <h2 class="text-center">{leistung.title}</h2>
+              <ul class="gap-2 flex flex-col">
+                {leistung.items.map((item) => (
+                  <li class="flex">
+                    <Icon class="w-4 mr-2" name="twemoji:star" />
+                    <span class="flex-1">{item}</span>
+                  </li>
+                ))}
+                {leistung.title === "Aktivpaket" && (
+                  <div class="flex">
+                    <Icon class="w-4 mr-2" name="twemoji:information" />
+                    <div class="flex-1">
+                      Einmal im Monat am Wochenende eigener Abäppeldienst mit weiterem Einsteller
+                    </div>
+                  </div>
+                )}
+              </ul>
+            </div>
+          ))
+        }
+        <div class="flex">
+          <Icon class="w-4 mr-2" name="twemoji:information" />
+          <div class="flex-1">Einmal im Monat am Wochenende eigener Abäppeldienst mit weiterem Einsteller</div>
+        </div>
+      </Tabs>
+      <div class="mt-16">
+        <ButtonPrimary text="Jetzt bewerben" link="/kontakt" />
+      </div>
+    </section>
+  </main>
+</Layout>

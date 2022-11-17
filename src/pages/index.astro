@@ -1,18 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
-import { cards } from "../data/cards";
-import { Picture } from "astro-imagetools/components";
-import ButtonPrimary from "../components/ButtonPrimary.astro";
 import Heading from "../components/Heading.astro";
-import LazyLoad from "vanilla-lazyload";
+import { Icon } from "astro-icon";
+import { philosophien } from "../data/philosophie";
+import "@fontsource/inter/700.css";
 ---
 
 <Layout title="Home">
-  <Hero path="src/images/backgrounds" heading="Entdecke die Freiheit" />
-  <div class="bottom-8 z-10 w-full mt-40">
+  <Hero path="src/images/backgrounds" />
+  <div class="bottom-8 z-10 w-full mt-40 px-4">
     <div class="mx-auto container text-center">
-      <h1 class="text-base text-xl lg:text-2xl text-white-50 font-text m-0">
+      <h1 class="text-xl lg:text-2xl text-white-50 font-text m-0">
         <span class="font-sec text-colored-300">Aktivstall</span> Pfaffenwinkel
       </h1>
       <h2 class="text-5xl leading-none lg:text-7xl leading-tight text-white-50 mt-0 shadow-white">
@@ -25,62 +24,71 @@ import LazyLoad from "vanilla-lazyload";
     </div>
   </div>
   <main class="container mx-auto mt-96">
-    <section>
-      <Heading heading="Mehr erfahren" />
-      <div class="mt-8 flex flex-col md:flex-row md:space-x-8">
+    <section class="px-4 pt-12 pb-8 bg-white-50">
+      <Heading heading="Dein neuer Aktivstall" />
+      <div>
+        <ul>
+          <li class="flex mb-4">
+            <div class="w-12 mr-4">
+              <Icon name="twemoji:horse" />
+            </div>
+            <div class="flex-1">
+              Wir haben jahrelange Erfahrung in der Pensionspferdehaltung und im Turniergeschehen
+            </div>
+          </li>
+          <li class="flex mb-4">
+            <div class="w-12 mr-4">
+              <Icon name="twemoji:timer-clock" />
+            </div>
+            <div class="flex-1">
+              Kraftfutterautomaten und zeitgesteuerte Heuraufen bieten den Tieren eine auf sie abgestimmte Haltung
+            </div>
+          </li>
+          <li class="flex mb-4">
+            <Icon name="twemoji:snow-capped-mountain" class="w-12 mr-4" /><div class="flex-1">
+              Weite Wiesen, der Lech und vier Badeseen zu Füßen der Alpen laden zu tollen Ausritten ein
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="aspect-video mb-12">
+        <iframe
+          class="w-full h-full"
+          src="https://www.youtube.com/embed/ukF_iRNUuow"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/ukF_iRNUuow?autoplay=1><img src=https://img.youtube.com/vi/ukF_iRNUuow/hqdefault.jpg alt='Video The Dark Knight Rises: What Went Wrong? – Wisecrack Edition'><span>▶</span></a>"
+        >
+        </iframe>
+      </div>
+    </section>
+    <section class="px-4 py-8 bg-white-900/50 text-white-50">
+      <Heading heading="Unsere Philosophie" />
+      <div class="flex flex-col md:flex-row md:space-x-8">
         {
-          cards.map((card) => (
-            <div class="text-colored-900 bg-colored-50 mt-8 md:mt-0 p-4 flex flex-col md:w-1/3">
-              <h2 class="text-xl">{card.headline}</h2>
-              <p class="mb-4">{card.text}</p>
-              <div class="mt-auto">
-                <ButtonPrimary text={card.ctaText} link={card.link} />
-              </div>
+          philosophien.map((p) => (
+            <div class="text-colored-100 bg-white-900/10 mb-8 md:mt-0 p-4 flex flex-col md:w-1/3">
+              <h2 class="font-bold text-base font-text">{p.headline}</h2>
+              <p class="mb-4">{p.text}</p>
             </div>
           ))
         }
       </div>
     </section>
-    <section>
-      <Heading heading="Dein neuer Aktivstall" />
+    <section class="px-4 py-8 bg-white-50">
+      <Heading heading="Über uns" />
       <div>
-        <div>
-          <div>Wir haben jahrelange Erfahrung in der Pensionspferdehaltung und im Turniergeschehen</div>
-          <div>
-            Kraftfutterautomaten und zeitgesteuerte Heuraufen bieten den Tieren eine auf sie abgestimmte Haltung
-          </div>
-          <div>Weite Wiesen, der Lech und vier Badeseen zu Füßen der Alpen laden zu tollen Ausritten ein</div>
-        </div>
-        <div class="lazy">
-          <iframe
-            class="lazy w-full"
-            src="https://www.youtube.com/embed/ukF_iRNUuow"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
-        </div>
+        Der landwirtschaftliche Betrieb ist bereits in 4. Generation und wird von Manfred und Michaela Hindelang
+        gemeinsam geführt. Bis 2019 haben wir Milchviehhaltung im modernen Außenklimastall betrieben. Durch einen
+        schweren Unfall 2018 von Manfred Hindelang, wurde klar, den Betrieb nun auf den bereits seit Jahren geplanten
+        Traum von einem eigenen Pensionsstall, in dem Pferde artgerecht und natürlich leben können, umzustellen. Es ist
+        uns eine Herzensangelegenheit, natürliche Haltung und Training in Einklang zu bringen. Michaela Hindelang,
+        gelernte Groß- und Außenhandelskauffrau, Weiterbildung zur Agrarbürofachfrau, erfolgreiche Prüfung zum
+        Sachkundenachweis in Pferdehaltung und Service Manfred Hindelang, gelernter Landwirt, für die Außenanlage
+        zuständig Franziska Hindelang, Tochter, mit Reitabzeichen RA6, hilft mit, so wie es ihre Arbeitszeiten erlauben
+        Martin Hindelang, Sohn, rechte Hand von Manfred Hindelang
       </div>
     </section>
   </main>
 </Layout>
-<script>
-  declare global {
-    interface Window {
-      lazyLoadInstance?: any;
-      lazyLoadOptions?: any;
-    }
-    interface Event {
-      detail?: any;
-    }
-  }
-  window.lazyLoadOptions = {};
-  window.addEventListener(
-    "LazyLoad::Initialized",
-    function (event) {
-      window.lazyLoadInstance = event.detail.instance;
-    },
-    false
-  );
-</script>
-
-<script async src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script>

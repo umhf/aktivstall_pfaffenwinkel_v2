@@ -1,14 +1,14 @@
 ---
-import { Icon } from "astro-icon";
 const { headings } = Astro.props;
+import "@fontsource/inter/700.css";
 ---
 
 <div class="tabs">
   <ul class="tabs-header flex mb-4">
     {
       headings.map((heading) => (
-        <li class="flex cursor-pointer justify-center items-center flex-auto text-center w-full block uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 rounded-t hover:text-colored-900 transition-colors">
-          {heading.art} <Icon name={heading.icon} class="w-8 ml-2" />
+        <li class="flex font-bold py-4 cursor-pointer justify-center items-center flex-auto text-center w-full block px-2 md:px-6 md:py-3 my-2 rounded-t hover:bg-colored-100 transition-colors">
+          {heading.art}
         </li>
       ))
     }
@@ -29,12 +29,12 @@ const { headings } = Astro.props;
 
     function setTab(index) {
       if (current_tab_index > -1) {
-        tab_headers[current_tab_index].classList.remove("text-colored-900", "bg-colored-50");
-        tab_headers[current_tab_index].classList.add("border-transparent");
+        tab_headers[current_tab_index].classList.remove("text-colored-50", "bg-colored-500");
+        tab_headers[current_tab_index].classList.add("hover:bg-colored-100");
         tab_contents[current_tab_index].classList.add("hidden");
       }
-      tab_headers[index].classList.add("text-colored-900", "bg-colored-50");
-      tab_headers[index].classList.remove("border-transparent");
+      tab_headers[index].classList.add("text-colored-50", "bg-colored-500");
+      tab_headers[index].classList.remove("hover:bg-colored-100");
       tab_contents[index].classList.remove("hidden");
       current_tab_index = index;
     }
