@@ -13,9 +13,10 @@ async function startDeploy() {
 export const handler =  async () => {
     shouldDeploy().then(res => {
         res && startDeploy()
+        return {
+            statusCode: 200,
+            body: JSON.stringify(res)
+        }
     })
     
-    return {
-        statusCode: 200
-    }
 }
