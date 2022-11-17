@@ -1,5 +1,4 @@
 import fetch from "node-fetch"
-import { schedule } from '@netlify/functions'
 import { shouldDeploy } from "./should-start-deploy";
 const BUILD_HOOK = "https://api.netlify.com/build_hooks/6371e615528c7870cd4659e3";
 
