@@ -11,11 +11,16 @@ async function startDeploy() {
     })
 }
 
-export const handler = schedule("0 0 * * *", async () => {
+export const handler = schedule("0-59/5 * * * *", async () => {
     return shouldDeploy().then(res => {
-        res && startDeploy()
-        return {
-            statusCode: 200
+        if (res) {
+            return startDeploy().then(() => {
+                return {
+                    statusCode: 200,
+                    body: JSON.stringify(res)
+
+                }
+            })
         }
     })
     

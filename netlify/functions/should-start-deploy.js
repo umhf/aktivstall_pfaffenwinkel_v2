@@ -29,6 +29,9 @@ export const shouldDeploy = async () => {
 }
 
 export const handler = async () => {
+
+    const shouldDeploy3 = await shouldDeploy();
+    console.log(shouldDeploy3);
     return shouldDeploy().then(shouldDeployToday => {
         return {
             statusCode: 200,
